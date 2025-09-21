@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Panel de Gestión de Pedidos - CC-Regalos</h1>
+        <a href="{{ url_for('agregar_pedido') }}" class="btn-agregar">Agregar Nuevo Pedido</a>
+        
+        <h2>Pedidos Recientes</h2>
+        
+        <div class="responsive-table">
+            <div class="header-row">
+                <div class="header-cell">ID</div>
+                <div class="header-cell">Cliente</div>
+                <div class="header-cell">Producto</div>
+                <div class="header-cell">Cantidad</div>
+                <div class="header-cell">Fecha de Pedido</div>
+                <div class="header-cell">Fecha de Entrega</div>
+                <div class="header-cell">Estado</div>
+                <div class="header-cell">Acciones</div>
+            </div>
+
+            {% for pedido in pedidos %}
+            <div class="table-row {% if pedido.alerta %}alerta{% endif %}">
+                <div class="table-cell" data-label="ID">{{ pedido.id }}</div>
+                <div class="table-cell" data-label="Cliente">{{ pedido.nombre_cliente }}</div>
+                <div class="table-cell" data-label="Producto">{{ pedido.producto }}</div>
+                <div class="table-cell" data-label="Cantidad">{{ pedido.cantidad }}</div>
+                <div class="table-cell" data-label="Fecha de Pedido">{{ pedido.fecha_pedido }}</div>
+                <div class="table-cell" data-label="Fecha de Entrega">{{ pedido.fecha_entrega }}</div>
+                <div class="table-cell" data-label="Estado">{{ pedido.estado }}</div>
+                <div class="table-cell acciones">
+                    <a href="{{ url_for('modificar_pedido', id=pedido.id) }}" class="btn-modificar">Modificar</a>
+                    <a href="{{ url_for('eliminar_pedido', id=pedido.id) }}" class="btn-eliminar" onclick="return confirm('¿Estás seguro de que quieres eliminar este pedido?')">Eliminar</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+/* --- Estilos base para toda la página --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    background-image: url(../css/images/fondo.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Estilos de botones, con transiciones */
+.btn-agregar, .btn-volver {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    background-color: #ec88bf;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agregar:hover, .btn-volver:hover {
+    background-color: #7100b3;
+}
+
+/* Estilos para el formulario */
+form label, form input, form button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* --- Estilos de la tabla con Flexbox --- */
+.responsive-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.header-row {
+    background-color: #ec88bf;
+    color: white;
+    font-weight: bold;
+    display: table-row;
+}
+
+.table-row {
+    display: table-row;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+.table-row:nth-child(even) {
+    background: #f9f9f9;
+}
+.table-row.alerta {
+    background-color: #ffcccc;
+    font-weight: bold;
+}
+
+.header-cell, .table-cell {
+    display: table-cell;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table-cell.acciones {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Estilos para los botones de acción */
+.btn-modificar, .btn-eliminar {
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+.btn-modificar {
+    background-color: #ffc107;
+    color: #333;
+}
+.btn-modificar:hover {
+    background-color: #e0a800;
+}
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+
+/* --- Media queries para dispositivos móviles --- */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 10px;
+    }
+    .responsive-table {
+        display: block; /* La tabla se comporta como un bloque en móviles */
+    }
+    .header-row {
+        display: none; /* Ocultamos la cabecera de la tabla */
+    }
+    .table-row {
+        display: flex;
+        flex-direction: column; /* Apilamos las celdas verticalmente */
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .table-cell {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border: none;
+    }
+    .table-cell::before {
+        content: attr(data-label); /* Mostramos el encabezado de la celda */
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 10px;
+        color: #555;
+    }
+    .table-cell.acciones {
+        padding-top: 15px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .btn-modificar, .btn-eliminar {
+        width: 48%; /* Ancho para que quepan dos botones por fila */
+        box-sizing: border-box;
+    }
+}
